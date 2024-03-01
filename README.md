@@ -1,4 +1,4 @@
-Lorenzo Attractor vizulization written in Processing 4.3. inspired by The Coding Train [coding challenge #12](https://www.youtube.com/watch?v=f0lkz2gSsIk)
+Lorenzo Attractor visualization is written in Processing 4.3. inspired by The Coding Train [coding challenge #12](https://www.youtube.com/watch?v=f0lkz2gSsIk)
 
 # DEMO
 
