@@ -1,8 +1,8 @@
 import peasy.*;
 
-Particle P; 
+Particle P;  // initiate particle object
 
-float sigma = 10;
+float sigma = 10;    //constants 
 float rho = 28; 
 float betta = 8.0/3.0;
 
@@ -12,38 +12,36 @@ float dx;
 float dy;
 float dz; 
 
-int NumOfParticles = 75;
+int NumOfParticles = 75;  // amount of particles you want in simulation
 
 float x = 0.0;
 float y = 0.0;
 float z = 0.0;
 
-int H;
-int S;
-int B;
-
-float offset;
+int H;  // hue
+int S;  // saturation 
+int B;  // brightness
 
 
-ArrayList<PVector> ParticleList = new ArrayList<PVector> (NumOfParticles);
-Particle[] Particles = new Particle[NumOfParticles];
 
-PeasyCam cam;
+
+ArrayList<PVector> ParticleList = new ArrayList<PVector> (NumOfParticles); // create a array list to store the locations of all particles 
+Particle[] Particles = new Particle[NumOfParticles];  // array of objects to hold each particles 
+
+PeasyCam cam;  // camera set up
 
 
 
 void setup(){
-    size(1400, 1400, P3D);
-    colorMode(HSB, 360, 100, 100);
-    cam = new PeasyCam(this, 500);
+    size(1400, 1400, P3D);          // window size in 3d space 
+    colorMode(HSB, 360, 100, 100);  // colour mode HSB and set maxs
+    cam = new PeasyCam(this, 500); //initiate camera
     
     
-    
-
-    float offset;
+   
     
     
-    for (int i = NumOfParticles; i > 0; i--){
+    for (int i = NumOfParticles; i > 0; i--){  // set start location of each particle, random used to create slightly different start points
       
       
         
@@ -62,7 +60,7 @@ void setup(){
     for(int count = NumOfParticles; count > 0; count--) {
      
     
-         if (count > (NumOfParticles/5)*3){
+         if (count > (NumOfParticles/5)*3){ //sets 3 different groups of particles with varying hue in red, blue, and purple
            H = int(random(0,50));
            S = 100;
            B = 100;
@@ -79,7 +77,7 @@ void setup(){
          }
 
          
-        Particles[count - 1] = new Particle(ParticleList.get(count-1),H,S,B);
+        Particles[count - 1] = new Particle(ParticleList.get(count-1),H,S,B); // set the start location of each particle and store the object into the object array called particles  
         
         
     
@@ -96,7 +94,7 @@ void draw(){
     translate(0, 0, 0);
     scale(5);
     
-for(int count = NumOfParticles; count > 0; count--) {
+for(int count = NumOfParticles; count > 0; count--) { //using the Particle class move, display and start particle trail to each object in the Particles array 
    
     Particles[count -1].move();
     Particles[count - 1].display();
@@ -104,25 +102,5 @@ for(int count = NumOfParticles; count > 0; count--) {
     
     
   } 
-
-    
-   
-   
-   /* noFill();
-    
-    float hu = 0;
-    beginShape();
-    for (PVector v : points) {
-
-      strokeWeight(0.5);
-      stroke(hu,255,255);
-      vertex(v.x,v.y,v.z);
-      hu += 0.1;
-      if (hu >255){
-        hu = 0;
-      }
-    }
-    endShape();
-    */
     
 }
